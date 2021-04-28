@@ -1,0 +1,16 @@
+name: Feature-CI
+on:
+  pull_request:
+    branches: [develop]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Rust Tookit
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - run: cargo check
+      - run: cargo test
+
